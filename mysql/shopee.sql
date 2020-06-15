@@ -56,6 +56,8 @@ CREATE TABLE `sanpham` (
   `ngayDang` datetime DEFAULT NULL,
   `mauSac` varchar(45) DEFAULT NULL,
   `kichCo` varchar(45) DEFAULT NULL,
+  `thuongHieu` varchar(45) DEFAULT NULL,
+  `chatLieu` varchar(45) DEFAULT NULL,
   `motaSanPham` text,
   `idLoaiSanPham` int(11) NOT NULL,
   PRIMARY KEY (`idSanPham`),
@@ -70,11 +72,7 @@ CREATE TABLE `sanpham` (
 
 LOCK TABLES `sanpham` WRITE;
 /*!40000 ALTER TABLE `sanpham` DISABLE KEYS */;
-<<<<<<< HEAD:mysql/shopee.sql
 INSERT INTO `sanpham` VALUES (1,'Áo Thun MYSTAR Unisex A022',69000,10,'MYSTAR_Unisex_A022.jpg','2020-01-01 00:00:00','Đen','M','No Brand','Cotton','Áo thun tay lỡ form rộng UNISEX dành cho cả nam và nữ',1),(2,'Áo Polo Hổ Mới Cực Chất Giá Rẻ',227000,100,'Ao_Polo_ho.jpg','2020-01-01 00:00:00','Xám','M','Adidas','Cashmere','ÁO CHỐNG NẮNG THỜI TRANG CAO CẤP ADIDAS ',1),(3,'Áo Thun Nam Tay Ngắn Cổ Tim 3 Màu Xéo Cotton Cao Cấp MS09',543000,50,'3_mau_cheo.jpg','2020-01-01 00:00:00','Đen','M','DOLCE&GABBANA','Thun','ÁO POLO SIÊU CẤP DOLCE GABBANA',1),(4,'Áo sơ mi caro nhỏ dài tay M2',99000,50,'AoSoMi_M2.jpg','2020-01-01 00:00:00','Trắng','M','No Brand','Thun','Thông tin sản phẩm áo thể thao nam',2),(6,'Áo sơ mi nam K768',69000,50,'AoSoMi_K768.jpg','2020-01-01 00:00:00','Đỏ','M','No Brand','Thun','++++Áo như hình+++',2),(7,'Áo Sơ Mi Caro Flannel Vàng',49000,50,'AoSoMi_Caro_Flannel.jpg','2020-01-01 00:00:00','Vàng','M','No Brand','Chất liệu khác','Áo thun lạnh nam co dãn 4 chiều ATT',2),(8,'Áo Quây Cực Nữ Tính Giá Siêu Mềm',165000,20,'AoQuay.jpg','2020-01-01 00:00:00','Đỏ','M','No Brand','Lụa','Áo voan quây chất voan siêu đẹp.',12),(9,'Áo Thun PIKACHU Unisex A015',69000,20,'AoThunPIKACHU_Unisex_A015.jpg',NULL,NULL,NULL,NULL,NULL,'Form unisex cho cả nam nữ',12);
-=======
-INSERT INTO `sanpham` VALUES (1,'Áo Thun MYSTAR Unisex A022',69000,10,NULL,'2020-01-01 00:00:00','Đen','M','Áo thun tay lỡ form rộng UNISEX dành cho cả nam và nữ',1),(2,'Áo chống nắng thời trang cao cấp Adidas [ hot trend ]',446000,100,NULL,'2020-01-01 00:00:00','Xám','M','ÁO CHỐNG NẮNG THỜI TRANG CAO CẤP ADIDAS ',1),(3,'Áo polo siêu cấp Dolce Gabbana [ hot trend ]',543000,50,NULL,'2020-01-01 00:00:00','Đen','M','ÁO POLO SIÊU CẤP DOLCE GABBANA',1),(4,'Áo Thể Thao Nam Ngắn Tay Cổ Tròn Thun Lạnh ATTA01 Áo Tập Gym Nam',99000,50,NULL,'2020-01-01 00:00:00','Trắng','M','Thông tin sản phẩm áo thể thao nam',1),(6,'Áo body tập gym nam Mẩu HNT01 5 màu (Thun lạnh) form chuẩn size M-2XL (Freeship)',69000,50,NULL,'2020-01-01 00:00:00','Đỏ','M','++++Áo như hình+++',1),(7,'Áo Thun Lạnh Co Giãn 4 Chiều.',49000,50,NULL,'2020-01-01 00:00:00','Đen','M','Áo thun lạnh nam co dãn 4 chiều ATT',1);
->>>>>>> d386821ac2aa7fb486c869ff0801a702b4799896:shopee(1).sql
 /*!40000 ALTER TABLE `sanpham` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -87,8 +85,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-<<<<<<< HEAD:mysql/shopee.sql
--- Dump completed on 2020-06-15  0:40:59
-=======
--- Dump completed on 2020-06-14 19:26:21
->>>>>>> d386821ac2aa7fb486c869ff0801a702b4799896:shopee(1).sql
+-- Dump completed on 2020-06-15 13:32:04
