@@ -143,7 +143,7 @@
 			</div><!-- box-image -->
 
 			<div class="box-text box-text-products">
-				<div class="title-wrapper"><p class="name product-title"><a href="home/ctsp.htm">${sp.tenSanPham}</a></p></div><div class="price-wrapper">
+				<div class="title-wrapper"><p class="name product-title"><a href="home/ctsp.htm?idsp=${sp.idSanPham}">${sp.tenSanPham}</a></p></div><div class="price-wrapper">
 					<span class="price">
 						<%-- <del><span class="woocommerce-Price-amount amount">${sp.giaTien}&nbsp;<span class="woocommerce-Price-currencySymbol">&#8363;</span></span></del> --%>
 						<ins><span class="woocommerce-Price-amount amount"><f:formatNumber value="${sp.giaTien}"/>&nbsp;<span class="woocommerce-Price-currencySymbol">&#8363;</span></span></ins>
