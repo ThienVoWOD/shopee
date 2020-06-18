@@ -12,8 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import shopee.bean.loaisanpham;
-import shopee.bean.sanpham;
+import shopee.bean.*;
 
 @Transactional
 @Controller
@@ -22,6 +21,26 @@ public class homecontroller {
 	@Autowired
 	SessionFactory factory;
 	String TenLoaiSanPham = "No";
+	
+	@RequestMapping("giohang")
+	public String giohang(ModelMap model) {
+	//	model.addAttribute("taikhoan", new taikhoan());
+		return "home/giohang";
+	}
+	
+	@RequestMapping("dangky")
+	public String dangky(ModelMap model) {
+		model.addAttribute("taikhoan", new taikhoan());
+		return "home/dangky";
+	}
+	
+	@RequestMapping("dangnhap")
+	public String dangnhap(ModelMap model) {
+		model.addAttribute("taikhoan", new taikhoan());
+		return "home/dangnhap";
+	}
+	
+	
 	
 	@RequestMapping("shop")
 	public String shop(ModelMap model,@ModelAttribute("TenLoaiSP") String TenLoaiSP,@ModelAttribute("idlsp") String idlsp) {

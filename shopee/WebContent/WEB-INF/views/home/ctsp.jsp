@@ -2,6 +2,91 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f" %>
 
+<<style>
+<!--
+
+/* CONTAINERS */
+
+.four { width: 15%}
+
+
+/* COLUMNS */
+
+.col {
+  display: block;
+  float:left;
+  margin: 1% 0 1% 1.6%;
+}
+
+.col:first-of-type { margin-left: 0; }
+
+/* CLEARFIX */
+
+
+
+/* FORM */
+
+.form .plan input, .form .payment-plan input, .form .payment-type input{
+	display: none;
+}
+
+.form label{
+	position: relative;
+	color: black;
+	text-align:center;
+	background-color: #fff;
+	font-size: 13px;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+	display: block;
+	cursor: pointer;
+	border: 1px solid #DDDDDD;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.form .plan input:checked + label, .form .payment-plan input:checked + label, .form .payment-type input:checked + label{	
+	background-color: #ee4d2d;
+	color: white;
+}
+/* --------------------------------- */
+
+.qt, .qt-plus, .qt-minus {
+	display: block;
+	float: left;
+}
+
+.qt {
+	height: 10px;
+	font-size: 15px;
+	line-height: 10px;
+	width: 10px;
+	text-align: center;
+}
+
+.qt-plus, .qt-minus {
+	width: 10px;
+	height: 10px;
+	background: #fcfcfc;
+	border: none;
+	text-align: center;
+	font-size: 15px;
+	border: 1px solid #DDDDDD;
+}
+
+
+.qt-plus {
+	line-height: 10px;
+}
+
+.qt-minus {
+	line-height: 10px;
+}
+
+-->
+</style>
 
 <div class="page-title shop-page-title product-page-title">
 	<div class="page-title-inner flex-row medium-flex-wrap container">
@@ -123,31 +208,50 @@
 			<tbody>
 					<tr>
 						<td class="label"><label for="pa_mau-sac">Màu sắc</label></td>
-						<td class="value">
-							<select id="pa_mau-sac" class=" hide woo-variation-raw-select woo-variation-raw-type-button" style="display:none" name="attribute_pa_mau-sac" data-attribute_name="attribute_pa_mau-sac" data-show_option_none="yes"><option value="">Chọn một tùy chọn</option><option value="den" >Đen</option><option value="do" >Đỏ</option><option value="trang" >Trắng</option><option value="vang" >Vàng</option></select><ul class="variable-items-wrapper button-variable-wrapper" data-attribute_name="attribute_pa_mau-sac"><li data-wvstooltip="Đen" class="variable-item button-variable-item button-variable-item-den " title="Đen" data-value="den" role="button" tabindex="0"><span class="variable-item-span variable-item-span-button">Đen</span></li><li data-wvstooltip="Đỏ" class="variable-item button-variable-item button-variable-item-do " title="Đỏ" data-value="do" role="button" tabindex="0"><span class="variable-item-span variable-item-span-button">Đỏ</span></li><li data-wvstooltip="Trắng" class="variable-item button-variable-item button-variable-item-trang " title="Trắng" data-value="trang" role="button" tabindex="0"><span class="variable-item-span variable-item-span-button">Trắng</span></li><li data-wvstooltip="Vàng" class="variable-item button-variable-item button-variable-item-vang " title="Vàng" data-value="vang" role="button" tabindex="0"><span class="variable-item-span variable-item-span-button">Vàng</span></li></ul>						</td>
+						<td class="value" style="width: 100%">
+									<div class="form cf">
+			<section class="plan cf">			
+				<input type="radio" name="mausac" id="do" value="do"><label class="free-label four col" for="do">Đỏ</label>
+				<input type="radio" name="mausac" id="trang" value="trang" checked><label class="basic-label four col" for="trang">Trắng</label>
+				<input type="radio" name="mausac" id="den" value="den"><label class="premium-label four col" for="den">Đen</label>
+				<input type="radio" name="mausac" id="xanh" value="xanh"><label class="premium-label four col" for="xanh">Đen</label>
+				<input type="radio" name="mausac" id="vang" value="vang"><label class="premium-label four col" for="vang">Vàng</label>
+				
+			</section>	
+			
+		</div>
+		</td>
 					</tr>
 									<tr>
-						<td class="label"><label for="pa_thuong-hieu">Thương Hiệu</label></td>
-						<td class="value">
-							<select id="pa_thuong-hieu" class=" hide woo-variation-raw-select woo-variation-raw-type-button" style="display:none" name="attribute_pa_thuong-hieu" data-attribute_name="attribute_pa_thuong-hieu" data-show_option_none="yes"><option value="">Chọn một tùy chọn</option><option value="kase" >Kase</option><option value="no-brand" >No Brand</option><option value="peak-design" >Peak Design</option><option value="voigtlander" >Voigtlander</option></select><ul class="variable-items-wrapper button-variable-wrapper" data-attribute_name="attribute_pa_thuong-hieu"><li data-wvstooltip="Kase" class="variable-item button-variable-item button-variable-item-kase " title="Kase" data-value="kase" role="button" tabindex="0"><span class="variable-item-span variable-item-span-button">Kase</span></li><li data-wvstooltip="No Brand" class="variable-item button-variable-item button-variable-item-no-brand " title="No Brand" data-value="no-brand" role="button" tabindex="0"><span class="variable-item-span variable-item-span-button">No Brand</span></li><li data-wvstooltip="Peak Design" class="variable-item button-variable-item button-variable-item-peak-design " title="Peak Design" data-value="peak-design" role="button" tabindex="0"><span class="variable-item-span variable-item-span-button">Peak Design</span></li><li data-wvstooltip="Voigtlander" class="variable-item button-variable-item button-variable-item-voigtlander " title="Voigtlander" data-value="voigtlander" role="button" tabindex="0"><span class="variable-item-span variable-item-span-button">Voigtlander</span></li></ul>						</td>
+						<td class="label"><label for="pa_thuong-hieu">Size</label></td>
+						<td class="value" style="width: 100%">
+							<div class="form cf">
+								<section class="plan cf">			
+									<input type="radio" name="size" id="S" value="S"><label class="free-label four col" for="S">S</label>
+									<input type="radio" name="size" id="M" value="M" checked><label class="basic-label four col" for="M">M</label>
+									<input type="radio" name="size" id="L" value="L"><label class="premium-label four col" for="L">L</label>
+									<input type="radio" name="size" id="XL" value="XL"><label class="premium-label four col" for="XL">XL</label>
+									<input type="radio" name="size" id="XXL" value="XXL"><label class="premium-label four col" for="XXL">XXL</label>
+								</section>
+							</div>	
+						</td>
+			
 					</tr>
-									<tr>
-						<td class="label"><label for="pa_tinh-trang">Tình Trạng</label></td>
-						<td class="value">
-							<select id="pa_tinh-trang" class=" hide woo-variation-raw-select woo-variation-raw-type-button" style="display:none" name="attribute_pa_tinh-trang" data-attribute_name="attribute_pa_tinh-trang" data-show_option_none="yes"><option value="">Chọn một tùy chọn</option><option value="san-pham-da-dung" >Sản phẩm đã dùng</option><option value="san-pham-moi" >Sản phẩm mới</option></select><ul class="variable-items-wrapper button-variable-wrapper" data-attribute_name="attribute_pa_tinh-trang"><li data-wvstooltip="Sản phẩm đã dùng" class="variable-item button-variable-item button-variable-item-san-pham-da-dung " title="Sản phẩm đã dùng" data-value="san-pham-da-dung"  role="button" tabindex="0"><span class="variable-item-span variable-item-span-button">Sản phẩm đã dùng</span></li><li data-wvstooltip="Sản phẩm mới" class="variable-item button-variable-item button-variable-item-san-pham-moi " title="Sản phẩm mới" data-value="san-pham-moi"  role="button" tabindex="0"><span class="variable-item-span variable-item-span-button">Sản phẩm mới</span></li></ul>						</td>
-					</tr>
+
 							</tbody>
 		</table>
 
-		
+		<p style="margin-right: 20px; float: left; line-height: 35px">Số lượng:</p>
 		<div class="quantity">	
-		Số lượng: 			
-		<input type="number" class="input-text" readonly style="width: 60px" step="1" min="1" max="${sp.soLuong}" name="quantity" value="1" autocomplete="off"/>
-		  ${sp.soLuong} Sản phẩm có sẵn
+		 		
+		<button class="qt-minus" id="tru">-</button>	
+		<input type="number" class="input-text qt" id="soluong" style="width: 50px; height: 38px;margin-left: -15px" step="1" min="1" max="${sp.soLuong}" name="quantity" value="1"/>
+		<button class="qt-plus" id="cong">+</button>
+		  
 		</div>
-	
+		<p style="line-height: 35px">${sp.soLuong} Sản phẩm có sẵn </p>
 		<button type="submit" class="single_add_to_cart_button button alt" style="margin-top: 20px; float:left;">Mua hàng</button>
-
+		
 	</div>
 	</div>
 </div>
@@ -283,3 +387,48 @@ ${sp.motaSanPham }
 
 </main><!-- #main -->
 
+<script type='text/javascript'>
+$('#tru').on('click', function(e) {
+	e.preventDefault();
+	var $this = $(this);
+	var $input = $this.closest('div').find('#soluong');
+	var value = parseInt($input.val());
+	if (value > 2) {
+		value = value - 1;
+	} else {
+		value = 1;
+	}
+
+$input.val(value);
+    
+});
+
+$('#cong').on('click', function(e) {
+	e.preventDefault();
+	var $this = $(this);
+	var $input = $this.closest('div').find('#soluong');
+	var value = parseInt($input.val());
+
+	if (value < ${sp.soLuong}) {
+	value = value + 1;
+	} else {
+		value = ${sp.soLuong};
+	}
+
+	$input.val(value);
+});
+
+//RESTRICT INPUTS TO NUMBERS ONLY WITH A MIN OF 0 AND A MAX 100
+$('#soluong').on('blur', function(){
+
+var input = $(this);
+var value = parseInt($(this).val());
+
+	if (value < 1 || isNaN(value)) {
+		input.val(1);
+	} else if
+		(value > ${sp.soLuong}) {
+		input.val(${sp.soLuong});
+	}
+	});
+</script>

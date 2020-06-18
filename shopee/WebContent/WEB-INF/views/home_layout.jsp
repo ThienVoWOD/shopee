@@ -34,17 +34,23 @@
 					</div><!-- center -->
 
 					<div class="flex-col hide-for-medium flex-right">
-						<ul class="nav top-bar-nav nav-right nav-small  nav-divided">
-							<li class="account-item has-icon">
-
-								<a href="http://shopee.websieukhung.com/tai-khoan/"
-								class="nav-top-link nav-top-not-logged-in "
-								data-open="#login-form-popup"  >
-								<span>
-								Đăng nhập     |  Đăng ký  </span>
-
-							</a><!-- .account-login-link -->
-						</li>
+						<ul class="nav top-bar-nav nav-right nav-small nav-divided">
+						<i class='fas fa-user-circle' style='font-size:20px; color: white'></i>
+						<c:if test="${empty TaiKhoan}">
+							<li class="">						
+								<a href="home/dangnhap.htm">
+									<span>Đăng nhập |</span>
+								</a><!-- .account-login-link --> 
+								<a href="home/dangky.htm">
+									<span>Đăng ký</span>
+								</a><!-- .account-login-link -->
+							</li>
+							</c:if>
+							<c:if test="${not empty TaiKhoan}">
+								<li class="">						
+									<a style="font-size: 16px"><span>${TaiKhoan }</span></a>
+								</li>
+							</c:if>
 					</ul>
 				</div><!-- .flex-col right -->
 
@@ -57,8 +63,8 @@
 				<!-- Logo -->
 				<div id="logo" class="flex-col logo">
 					<!-- Header logo -->
-					<a href="http://shopee.websieukhung.com/" title="Mẫu giao diện web giống shopee 99% - Một trang web mới sử dụng WordPress" rel="home">
-						<img width="156" height="85" src="#" class="header_logo header-logo" alt="Mẫu giao diện web giống shopee 99%"/><img  width="156" height="85" src="images/logo.png" class="header-logo-dark" alt="Mẫu giao diện web giống shopee 99%"/></a>
+					<a href="home/shop.htm" title="shopee" rel="home">
+						<img width="156" height="85" src="#" class="header_logo header-logo" alt="shopee"/><img  width="156" height="85" src="images/logo.png" class="header-logo-dark" alt="Mẫu giao diện web giống shopee 99%"/></a>
 					</div>
 
 					<!-- Mobile Left Elements -->
@@ -370,60 +376,16 @@
 </div><!-- #mobile-menu -->
 <div id='fb-root'></div>
 </div>    
-<div id="login-form-popup" class="lightbox-content mfp-hide">
-<div class="woocommerce-notices-wrapper"></div>
-<div class="account-container lightbox-inner">
-	<div class="col2-set row row-divided row-large" id="customer_login">
-		<div class="col-1 large-6 col pb-0">	
-			<div class="account-login-inner">
-				<h3 class="uppercase">Đăng nhập</h3>
-				<form class="woocommerce-form woocommerce-form-login login" method="post">					
-					<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-						<label for="username">Tên tài khoản hoặc địa chỉ email&nbsp;<span class="required">*</span></label>
-						<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" autocomplete="username" value="" />					</p>
-					<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-						<label for="password">Mật khẩu&nbsp;<span class="required">*</span></label>
-						<input class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="password" id="password" autocomplete="current-password" />
-					</p>					
-					<p class="form-row">
-						<label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme">
-							<input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever" /> <span>Ghi nhớ mật khẩu</span>
-						</label>
-						<input type="hidden" id="woocommerce-login-nonce" name="woocommerce-login-nonce" value="a652a025e7" /><input type="hidden" name="_wp_http_referer" value="/danh-muc/thoi-trang-nam/" />						<button type="submit" class="woocommerce-Button button woocommerce-form-login__submit" name="login" value="Đăng nhập">Đăng nhập</button>
-					</p>
-					<p class="woocommerce-LostPassword lost_password">
-						<a href="http://shopee.websieukhung.com/tai-khoan/lost-password/">Quên mật khẩu?</a>
-					</p>					
-				</form>
-			</div><!-- .login-inner -->			
-		</div>
 
-		<div class="col-2 large-6 col pb-0">
-			<div class="account-register-inner">
-				<h3 class="uppercase">Đăng ký</h3>
-				<form method="post" class="woocommerce-form woocommerce-form-register register">		
-					<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-						<label for="reg_email">Địa chỉ email&nbsp;<span class="required">*</span></label>
-						<input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="" />
-					</p>
-					<p>Một mật khẩu sẽ được gửi đến địa chỉ email của bạn.</p>					
-					<div class="woocommerce-privacy-policy-text">
-						<p>Thông tin cá nhân của bạn sẽ được sử dụng để tăng trải nghiệm sử dụng website, quản lý truy cập vào tài khoản của bạn, và cho các mục đích cụ thể khác được mô tả trong 
-						<a href="#" class="woocommerce-privacy-policy-link" target="_blank">chính sách riêng tư</a>.
-						</p>
-					</div>
-					<p class="woocommerce-FormRow form-row">
-						<input type="hidden" id="woocommerce-register-nonce" name="woocommerce-register-nonce" value="9e27497049" /><input type="hidden" name="_wp_http_referer" value="/danh-muc/thoi-trang-nam/" />						
-						<button type="submit" class="woocommerce-Button button" name="register" value="Đăng ký">Đăng ký</button>
-					</p>					
-				</form>
-			</div><!-- .register-inner -->
-		</div><!-- .large-6 -->
 	</div> <!-- .row -->
 
-</div><!-- .account-login-container -->
+	</div><!-- .account-login-container -->
 
-          </div>
+</div>
+
+
+
+
 		<!-- ------------------------------------------------------------------------------------------------- -->
 
 
