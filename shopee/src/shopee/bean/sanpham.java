@@ -1,12 +1,16 @@
 package shopee.bean;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class sanpham {
@@ -17,13 +21,44 @@ public class sanpham {
 	private int soLuong;
 	private String hinhAnh;
 	private Date ngayDang;
-	private String mauSac;
-	private String kichCo;
 	private String motaSanPham;
 	
+	@OneToMany(mappedBy="sanpham",fetch=FetchType.LAZY)
+	private Collection <cthd> cthd;
+	
+	public Collection<cthd> getCthd() {
+		return cthd;
+	}
+
+	public void setCthd(Collection<cthd> cthd) {
+		this.cthd = cthd;
+	}
+
+	public Collection<mausac> getMausac() {
+		return mausac;
+	}
+
+	public void setMausac(Collection<mausac> mausac) {
+		this.mausac = mausac;
+	}
+
+	public Collection<kichco> getKichco() {
+		return kichco;
+	}
+
+	public void setKichco(Collection<kichco> kichco) {
+		this.kichco = kichco;
+	}
+
 	@ManyToOne
 	@JoinColumn(name="idLoaiSanPham")
 	private loaisanpham loaisanpham;
+	
+	@OneToMany(mappedBy="sanpham",fetch=FetchType.LAZY)
+	private Collection <mausac> mausac;
+	
+	@OneToMany(mappedBy="sanpham",fetch=FetchType.LAZY)
+	private Collection <kichco> kichco;
 
 	public int getIdSanPham() {
 		return idSanPham;
@@ -71,22 +106,6 @@ public class sanpham {
 
 	public void setNgayDang(Date ngayDang) {
 		this.ngayDang = ngayDang;
-	}
-
-	public String getMauSac() {
-		return mauSac;
-	}
-
-	public void setMauSac(String mauSac) {
-		this.mauSac = mauSac;
-	}
-
-	public String getKichCo() {
-		return kichCo;
-	}
-
-	public void setKichCo(String kichCo) {
-		this.kichCo = kichCo;
 	}
 
 	public String getMotaSanPham() {

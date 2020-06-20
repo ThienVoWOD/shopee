@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f" %>
 
-<<style>
+<style>
 <!--
 
 /* CONTAINERS */
@@ -113,6 +113,7 @@
 			<div class="container">
 	<div class="woocommerce-notices-wrapper"></div></div><!-- /.container -->
 <div id="product-338" class="product type-product post-338 status-publish first instock product_cat-bach-hoa-online product_cat-dien-thoai-phu-kien product_cat-dong-ho product_cat-giay-dep-nam product_cat-giay-dep-nu product_cat-may-anh-may-quay-phim product_cat-may-tinh-laptop product_cat-me-be product_cat-nha-cua-doi-song product_cat-nha-sach-online product_cat-o-to-xe-may-xe-dap product_cat-phu-kien-thoi-trang product_cat-suc-khoe-sac-dep product_cat-the-thao-du-lich product_cat-thiet-bi-dien-gia-dung product_cat-thiet-bi-dien-tu product_cat-thoi-trang-nam product_cat-thoi-trang-nu product_cat-thoi-trang-tre-em product_cat-tui-vi product_cat-voucher-dich-vu has-post-thumbnail sale shipping-taxable purchasable product-type-variable">
+	
 	<div class="product-container">
 <div class="product-main">
 <div class="row content-row mb-0">
@@ -204,60 +205,86 @@
   <!-- <del><span class="woocommerce-Price-amount amount">590,000&nbsp;<span class="woocommerce-Price-currencySymbol">&#8363;</span></span></del> -->
   <ins><span class="woocommerce-Price-amount amount"><f:formatNumber value="${sp.giaTien}"/>&nbsp;<span class="woocommerce-Price-currencySymbol">&#8363;</span></span></ins></p>
   </div>
+  	<form action="addtocart.htm" method="POST">
 			<table class="variations" cellspacing="0">
 			<tbody>
 					<tr>
 						<td class="label"><label for="pa_mau-sac">Màu sắc</label></td>
 						<td class="value" style="width: 100%">
-									<div class="form cf">
-			<section class="plan cf">			
-				<input type="radio" name="mausac" id="do" value="do"><label class="free-label four col" for="do">Đỏ</label>
-				<input type="radio" name="mausac" id="trang" value="trang" checked><label class="basic-label four col" for="trang">Trắng</label>
-				<input type="radio" name="mausac" id="den" value="den"><label class="premium-label four col" for="den">Đen</label>
-				<input type="radio" name="mausac" id="xanh" value="xanh"><label class="premium-label four col" for="xanh">Đen</label>
-				<input type="radio" name="mausac" id="vang" value="vang"><label class="premium-label four col" for="vang">Vàng</label>
-				
-			</section>	
-			
+		<div class="form cf">
+			<section class="plan cf">		
+				<c:if test="${ms.mau1 ne '' }">
+					<input type="radio" name="mausac" id="${ms.mau1 }" value="${ms.mau1 }" checked><label class="free-label four col" for="${ms.mau1 }">${ms.mau1 }</label>
+				</c:if>
+				<c:if test="${ms.mau2 ne '' }">
+					<input type="radio" name="mausac" id="${ms.mau2 }" value="${ms.mau2 }"><label class="free-label four col" for="${ms.mau2 }">${ms.mau2 }</label>
+				</c:if>
+				<c:if test="${ms.mau3 ne '' }">
+					<input type="radio" name="mausac" id="${ms.mau3 }" value="${ms.mau3 }"><label class="free-label four col" for="${ms.mau3 }">${ms.mau3 }</label>
+				</c:if>
+				<c:if test="${ms.mau4 ne '' }">
+					<input type="radio" name="mausac" id="${ms.mau4 }" value="${ms.mau4 }"><label class="free-label four col" for="${ms.mau4 }">${ms.mau4 }</label>
+				</c:if>
+				<c:if test="${ms.mau5 ne '' }">
+					<input type="radio" name="mausac" id="${ms.mau5 }" value="${ms.mau5 }"><label class="free-label four col" for="${ms.mau5 }">${ms.mau5 }</label>
+				</c:if>			
+			</section>				
 		</div>
 		</td>
 					</tr>
-									<tr>
+					<tr>
 						<td class="label"><label for="pa_thuong-hieu">Size</label></td>
 						<td class="value" style="width: 100%">
 							<div class="form cf">
 								<section class="plan cf">			
-									<input type="radio" name="size" id="S" value="S"><label class="free-label four col" for="S">S</label>
-									<input type="radio" name="size" id="M" value="M" checked><label class="basic-label four col" for="M">M</label>
-									<input type="radio" name="size" id="L" value="L"><label class="premium-label four col" for="L">L</label>
-									<input type="radio" name="size" id="XL" value="XL"><label class="premium-label four col" for="XL">XL</label>
-									<input type="radio" name="size" id="XXL" value="XXL"><label class="premium-label four col" for="XXL">XXL</label>
+									<c:if test="${kc.size1 ne '' }">
+										<input type="radio" name="size" id="${kc.size1 }" value="${kc.size1 }" checked><label class="free-label four col" for="${kc.size1 }">${kc.size1 }</label>
+									</c:if>
+									<c:if test="${kc.size2 ne '' }">
+										<input type="radio" name="size" id="${kc.size2 }" value="${kc.size2 }"><label class="free-label four col" for="${kc.size2 }">${kc.size2 }</label>
+									</c:if>
+									<c:if test="${kc.size3 ne '' }">
+										<input type="radio" name="size" id="${kc.size3 }" value="${kc.size3 }"><label class="free-label four col" for="${kc.size3 }">${kc.size3 }</label>
+									</c:if>
+									<c:if test="${kc.size4 ne '' }">
+										<input type="radio" name="size" id="${kc.size4 }" value="${kc.size4 }"><label class="free-label four col" for="${kc.size4 }">${kc.size4 }</label>
+									</c:if>
+									<c:if test="${kc.size5 ne '' }">
+										<input type="radio" name="size" id="${kc.size5 }" value="${kc.size5 }"><label class="free-label four col" for="${kc.size5 }">${kc.size5 }</label>
+									</c:if>
 								</section>
 							</div>	
 						</td>
 			
 					</tr>
-
-							</tbody>
+			</tbody>
 		</table>
 
 		<p style="margin-right: 20px; float: left; line-height: 35px">Số lượng:</p>
 		<div class="quantity">	
 		 		
 		<button class="qt-minus" id="tru">-</button>	
-		<input type="number" class="input-text qt" id="soluong" style="width: 50px; height: 38px;margin-left: -15px" step="1" min="1" max="${sp.soLuong}" name="quantity" value="1"/>
+		<input type="number" class="input-text qt" id="soluong" style="width: 50px; height: 38px;margin-left: -15px" step="1" min="1" max="${sp.soLuong}" name="soluong" value="1"/>
 		<button class="qt-plus" id="cong">+</button>
 		  
 		</div>
 		<p style="line-height: 35px">${sp.soLuong} Sản phẩm có sẵn </p>
-		<button type="submit" class="single_add_to_cart_button button alt" style="margin-top: 20px; float:left;">Mua hàng</button>
+	
+		<input type="hidden" name="txtMaSP" value="${sp.idSanPham}" >
+		<input type="hidden" name="txtTenSP" value="${sp.tenSanPham }" >
+		<input type="hidden" name="txtGia" value="${sp.giaTien}" >
+		<input type="hidden" name="txtHinh" value="${sp.hinhAnh}" >
 		
+		<button type="submit" class="single_add_to_cart_button button alt" style="margin-top: 20px; float:left;">Mua hàng</button>
+	</form>
+	
+
 	</div>
 	</div>
 </div>
 		</div>
 	
-	</form>
+	
 
 
 	</div><!-- .summary -->
@@ -381,9 +408,7 @@ ${sp.motaSanPham }
 
 	</div><!-- container -->
 </div><!-- product-footer -->
-</div><!-- .product-container -->
-</div>
-</div><!-- shop container -->
+
 
 </main><!-- #main -->
 

@@ -90,7 +90,17 @@ public class homecontroller {
 		query1.setMaxResults(10);
 		List<sanpham> dsshop = query1.list();
 		
+		String hql2 = "FROM kichco where idSanPham = " + idsp + "";
+		Query query2 = session.createQuery(hql2);
+		kichco kichco = (kichco) query2.uniqueResult();
+		
+		String hql3 = "FROM mausac where idSanPham = " + idsp + "";
+		Query query3 = session.createQuery(hql3);
+		mausac mausac = (mausac) query3.uniqueResult();
+		
 		model.addAttribute("sp", sanpham);
+		model.addAttribute("ms", mausac);
+		model.addAttribute("kc", kichco);
 		model.addAttribute("dsshop", dsshop);
 		model.addAttribute("TenLoaiSP", TenLoaiSanPham);
 		return "home/ctsp";

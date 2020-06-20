@@ -25,7 +25,8 @@ import services.md5;
 public class accountcontroller {
 	@Autowired
 	SessionFactory factory;
-
+	public static String Username = "";
+	
 	@RequestMapping(value = "dangky", method = RequestMethod.POST)
 	public String register(ModelMap model, @ModelAttribute("taikhoan") taikhoan user) {
 		boolean run = true;
@@ -69,8 +70,6 @@ public class accountcontroller {
 	public String logins(ModelMap model, @ModelAttribute("taikhoan") taikhoan taikhoan, HttpSession ss) {
 		if (taikhoan.getEmail().equalsIgnoreCase("") || taikhoan.getMatkhau().equalsIgnoreCase("")) {
 			model.addAttribute("error", "Vui lòng nhập đầy đủ thông tin");
-//			model.addAttribute("taikhoan", new taikhoan());
-//			return "home/dangnhap";
 		}
 
 		Session session = factory.getCurrentSession();
@@ -81,8 +80,8 @@ public class accountcontroller {
 			if (user.getMatkhau().equals(md5.getMd5(taikhoan.getMatkhau()))) {
 				ss.setAttribute("TaiKhoan", user.getTenTaiKhoan());
 				ss.setAttribute("role", user.getQuyen());
-				return "redirect:home/shop.htm";
-//				Username = user.getUsername();
+				Username = user.getTenTaiKhoan();
+				return "redirect:home/shop.htm";				
 //				Role = user.getRole();
 //				if (user.getRole().equals("admin")) {
 //					return "redirect:admin/index.htm";
@@ -97,5 +96,13 @@ public class accountcontroller {
 			model.addAttribute("error", "Tài khoản không đúng");
 		}
 		return "home/dangnhap";
+	}
+	
+	@RequestMapping("dangxuat")
+	public String logout(ModelMap model, HttpSession ss) {
+		ss.removeAttribute("TaiKhoan");
+		ss.removeAttribute("role");
+		Username ="";
+		return "redirect:home/shop.htm";
 	}
 }

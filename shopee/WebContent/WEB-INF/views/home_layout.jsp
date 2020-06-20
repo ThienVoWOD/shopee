@@ -47,8 +47,12 @@
 							</li>
 							</c:if>
 							<c:if test="${not empty TaiKhoan}">
-								<li class="">						
+								<li class="has-dropdown">						
 									<a style="font-size: 16px"><span>${TaiKhoan }</span></a>
+									<ul class="nav-dropdown nav-dropdown-default">
+										<li><a href="dangxuat.htm">Đăng xuất</a></li>
+										<li><a href="thanhtoan.htm">Thanh toán</a></li>
+									</ul>
 								</li>
 							</c:if>
 					</ul>
@@ -113,18 +117,19 @@
 				<div class="flex-col hide-for-medium flex-right">
 					<ul class="header-nav header-nav-main nav nav-right  nav-uppercase">
 						<li class="cart-item has-icon has-dropdown">
-							<a href="#" title="Giỏ hàng" class="header-cart-link is-small">
+							<a href="home/giohang.htm" title="Giỏ hàng" class="header-cart-link is-small">
 								<span class="image-icon header-cart-icon" data-icon-label="0">
 									<img class="cart-img-icon" alt="Giỏ hàng" src="images/cart.png"/>
 								</span><!-- .cart-img-inner -->
 							</a>
-							<ul class="nav-dropdown nav-dropdown-default">
+							
+							<!-- <ul class="nav-dropdown nav-dropdown-default">
 								<li class="html widget_shopping_cart">
 									<div class="widget_shopping_cart_content">
 										<p class="woocommerce-mini-cart__empty-message">Chưa có sản phẩm trong giỏ hàng.</p>
 									</div>
 								</li>
-							</ul><!-- .nav-dropdown -->
+							</ul> -->
 						</li>
 					</ul>
 				</div>

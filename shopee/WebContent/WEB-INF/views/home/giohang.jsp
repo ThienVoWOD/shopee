@@ -1,6 +1,41 @@
 <%@ page pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f" %>
+
+<style type="text/css">
+.qt, .qt-plus, .qt-minus {
+	display: block;
+	float: left;
+}
+
+.qt {
+	height: 20px ;
+	font-size: 20px;
+	line-height: 35px;
+	width: 20px;
+	color: red;
+	margin-right: 5px;
+	margin-left: -10px;
+}
+
+input .qt-plus,input .qt-minus {
+	width: 20px !important;
+	height: 20px !important;
+	background: #fcfcfc;
+	border: none;
+	text-align: center;
+	font-size: 13px;
+	line-height: 20px;
+	
+}
+
+.qt-plus:hover, .qt-minus:hover {
+	background: #ffc107;
+	color: #fff;
+	cursor: pointer;
+}
+
+</style>
 
 <main id="main" class="">
 
@@ -12,24 +47,13 @@
 
 
 					<div class="woocommerce">
-						<div class="woocommerce-notices-wrapper">
-							<div class="woocommerce-info message-wrapper">
-								<div class="message-container container medium-text-center">
-									Đã cập nhật chi phí giao hàng.</div>
-							</div>
-						</div>
 						<div class="woocommerce row row-large row-divided">
-							<div class="col large-7 pb-0 ">
-
-
-								<form class="woocommerce-cart-form"
-									action="http://shopee.websieukhung.com/gio-hang/" method="post">
+							<div class="col large-9 pb-0 ">
+								<c:set var="total" value="0" />								
+									<c:if test="${not empty shop}">
 									<div class="cart-wrapper sm-touch-scroll">
-
-
-										<table
-											class="shop_table shop_table_responsive cart woocommerce-cart-form__contents"
-											cellspacing="0">
+										<table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents"
+											cellspacing="0">																				
 											<thead>
 												<tr>
 													<th class="product-name" colspan="3">Sản phẩm</th>
@@ -37,163 +61,105 @@
 													<th class="product-quantity">Số lượng</th>
 													<th class="product-subtotal">Tạm tính</th>
 												</tr>
-											</thead>
-											<tbody>
-
+											</thead>								
+										<c:forEach var="rows" items="${shop}">
+											<tbody>											
 												<tr class="woocommerce-cart-form__cart-item cart_item">
-
 													<td class="product-remove"><a
-														href="#"
-														class="remove" aria-label="Xóa sản phẩm này"
-														data-product_id="339" data-product_sku="">×</a></td>
-
+														href="deletetocart.htm?idsp=${rows.value.getSanPham().getMaSP()}"
+														class="remove">×</a></td>
 													<td class="product-thumbnail"><a
 														href="#"><img
-															width="188" height="188"
-															src="http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-188x188.jpg"
-															data-src="http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-188x188.jpg"
-															class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image lazy-load-active"
-															alt=""
-															srcset="http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-188x188.jpg 188w, http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-100x100.jpg 100w, http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-600x600.jpg 600w, http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-360x360.jpg 360w, http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-768x768.jpg 768w, http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e.jpg 900w"
-															data-srcset="http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-188x188.jpg 188w, http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-100x100.jpg 100w, http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-600x600.jpg 600w, http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-360x360.jpg 360w, http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-768x768.jpg 768w, http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e.jpg 900w"
-															sizes="(max-width: 188px) 100vw, 188px"></a></td>
+															width="100" height="100"
+															src="AnhSanPham/${rows.value.getSanPham().getHinh()}"
+															class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image lazy-load-active"></a></td>
 
 													<td class="product-name" data-title="Sản phẩm"><a
-														href="#">Giày
-															thể thao nữ Jintu 2 phối màu trắng hồng/kem cam vải mềm
-															thoáng chân</a>
+														href="#">${rows.value.getSanPham().getTenSP() }</a>
 														<dl class="variation">
 															<dt class="variation-Musc">Màu sắc:</dt>
 															<dd class="variation-Musc">
-																<p>Đen</p>
+																<p>${rows.value.getSanPham().getMauSac() }</p>
 															</dd>
 															<br>
 															<dt class="variation-ThngHiu">Size:</dt>
 															<dd class="variation-ThngHiu">
-																<p>M</p>
+																<p>${rows.value.getSanPham().getSize() }</p>
 															</dd>
 
-														</dl>
-														<div class="show-for-small mobile-product-price">
-															<span class="mobile-product-price__qty">2 x </span> <span
-																class="woocommerce-Price-amount amount">420,000&nbsp;<span
-																class="woocommerce-Price-currencySymbol">₫</span></span>
-														</div></td>
+														</dl></td>
 
 													<td class="product-price" data-title="Giá"><span
-														class="woocommerce-Price-amount amount">420,000&nbsp;<span
+														class="woocommerce-Price-amount amount"><f:formatNumber value="${rows.value.getSanPham().getGia()}"/>&nbsp;<span
 															class="woocommerce-Price-currencySymbol">₫</span></span></td>
 
-													<td class="product-quantity" data-title="Số lượng">
-														<div class="quantity buttons_added">
-															<label class="screen-reader-text"
-																for="quantity_5ee9066d104e1">Giày thể thao nữ
-																Jintu 2 phối màu trắng hồng/kem cam vải mềm thoáng chân
-																số lượng</label> <input type="number"
-																id="quantity_5ee9066d104e1" class="input-text qty text"
-																step="1" min="0" max="9999"
-																name="cart[f085907b62216f6992a0ea48281d8bf4][qty]"
-																value="2" title="SL" size="4" inputmode="numeric">
-														</div>
+													<td class="product-quantity" data-title="Số lượng" width="200px">
+												
+																<form action="delete1tocart.htm" method="POST">
+														<input type="submit"
+															class="qt-minus" value="-">
+														<input type="hidden" name="txtMaSP"
+															value="${rows.value.getSanPham().getMaSP()}"> <input
+															type="hidden" name="txtTenSP"
+															value="${rows.value.getSanPham().getTenSP()}"> <input
+															type="hidden" name="txtGia"
+															value="${rows.value.getSanPham().getGia()}"> <input
+															type="hidden" name="txtHinh"
+															value="${rows.value.getSanPham().getHinh()}"> <input
+															type="hidden" name="mausac"
+															value="${rows.value.getSanPham().getMauSac() }"> <input
+															type="hidden" name="size"
+															value="${rows.value.getSanPham().getSize() }">
+													</form> <span class="qt">${rows.value.getSoLuong()}</span>
+													<form action="add1tocart.htm" method="POST">
+														<input type="submit"
+															class="qt-plus" value="+">														<input type="hidden" name="txtMaSP"
+															value="${rows.value.getSanPham().getMaSP()}"> <input
+															type="hidden" name="txtTenSP"
+															value="${rows.value.getSanPham().getTenSP()}"> <input
+															type="hidden" name="txtGia"
+															value="${rows.value.getSanPham().getGia()}"> <input
+															type="hidden" name="txtHinh"
+															value="${rows.value.getSanPham().getHinh()}"><input
+															type="hidden" name="mausac"
+															value="${rows.value.getSanPham().getMauSac() }"> <input
+															type="hidden" name="size"
+															value="${rows.value.getSanPham().getSize() }">
+													</form>
+													
 													</td>
 
 													<td class="product-subtotal" data-title="Tạm tính"><span
-														class="woocommerce-Price-amount amount">840,000&nbsp;<span
-															class="woocommerce-Price-currencySymbol">₫</span></span></td>
-												</tr>
-<!-- ------- -->
-												<tr class="woocommerce-cart-form__cart-item cart_item">
-
-													<td class="product-remove"><a
-														href="#"
-														class="remove" aria-label="Xóa sản phẩm này"
-														data-product_id="339" data-product_sku="">×</a></td>
-
-													<td class="product-thumbnail"><a
-														href="#"><img
-															width="188" height="188"
-															src="http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-188x188.jpg"
-															data-src="http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-188x188.jpg"
-															class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image lazy-load-active"
-															alt=""
-															srcset="http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-188x188.jpg 188w, http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-100x100.jpg 100w, http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-600x600.jpg 600w, http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-360x360.jpg 360w, http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-768x768.jpg 768w, http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e.jpg 900w"
-															data-srcset="http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-188x188.jpg 188w, http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-100x100.jpg 100w, http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-600x600.jpg 600w, http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-360x360.jpg 360w, http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e-768x768.jpg 768w, http://shopee.websieukhung.com/wp-content/uploads/2020/04/a3553ee9f1ff3208feee2767ce14c52e.jpg 900w"
-															sizes="(max-width: 188px) 100vw, 188px"></a></td>
-
-													<td class="product-name" data-title="Sản phẩm"><a
-														href="#">Giày
-															thể thao nữ Jintu 2 phối màu trắng hồng/kem cam vải mềm
-															thoáng chân</a>
-														<dl class="variation">
-															<dt class="variation-Musc">Màu sắc:</dt>
-															<dd class="variation-Musc">
-																<p>Đen</p>
-															</dd>
-															<br>
-															<dt class="variation-ThngHiu">Size:</dt>
-															<dd class="variation-ThngHiu">
-																<p>M</p>
-															</dd>
-
-														</dl>
-														<div class="show-for-small mobile-product-price">
-															<span class="mobile-product-price__qty">2 x </span> <span
-																class="woocommerce-Price-amount amount">420,000&nbsp;<span
-																class="woocommerce-Price-currencySymbol">₫</span></span>
-														</div></td>
-
-													<td class="product-price" data-title="Giá"><span
-														class="woocommerce-Price-amount amount">420,000&nbsp;<span
-															class="woocommerce-Price-currencySymbol">₫</span></span></td>
-
-													<td class="product-quantity" data-title="Số lượng">
-														<div class="quantity buttons_added">
-															<label class="screen-reader-text"
-																for="quantity_5ee9066d104e1">Giày thể thao nữ
-																Jintu 2 phối màu trắng hồng/kem cam vải mềm thoáng chân
-																số lượng</label> <input type="number"
-																id="quantity_5ee9066d104e1" class="input-text qty text"
-																step="1" min="0" max="9999"
-																name="cart[f085907b62216f6992a0ea48281d8bf4][qty]"
-																value="2" title="SL" size="4" inputmode="numeric">
-														</div>
-													</td>
-
-													<td class="product-subtotal" data-title="Tạm tính"><span
-														class="woocommerce-Price-amount amount">840,000&nbsp;<span
+														class="woocommerce-Price-amount amount"><f:formatNumber value="${rows.value.getSoLuong() * rows.value.getSanPham().getGia()}"/>&nbsp;<span
 															class="woocommerce-Price-currencySymbol">₫</span></span></td>
 												</tr>
 												<!-- ---- -->
-
+										<c:set var="total"
+											value="${total + rows.value.getSoLuong() * rows.value.getSanPham().getGia()}" />
+										</c:forEach>
+									
 												<tr>
 													<td colspan="6" class="actions clear">
-
-
 														<div class="continue-shopping pull-left text-left">
 															<a
 																class="button-continue-shopping button primary is-outline"
-																href="#">
+																href="home/shop.htm">
 																←&nbsp;Tiếp tục xem sản phẩm </a>
 														</div>
-
-														<button type="submit"
-															class="button primary mt-0 pull-left small"
-															name="update_cart" value="Cập nhật giỏ hàng">Cập
-															nhật giỏ hàng</button> <input type="hidden"
-														id="woocommerce-cart-nonce" name="woocommerce-cart-nonce"
-														value="ca77893b2d"><input type="hidden"
-														name="_wp_http_referer" value="/gio-hang/">
 													</td>
 												</tr>
-
 											</tbody>
+											
 										</table>
 									</div>
-								</form>
+								</c:if>
+								<c:if test="${empty shop}">											
+											<center><h3>Không có sản phẩm trong giỏ hàng!</h3></center>									
+										</c:if>
 							</div>
+							
 
-
-							<div class="cart-collaterals large-5 col pb-0">
+							<div class="cart-collaterals large-3 col pb-0">
 
 								<div class="cart-sidebar col-inner ">
 									<div class="cart_totals calculated_shipping">
@@ -216,7 +182,7 @@
 												<tr class="cart-subtotal">
 													<th>Tạm tính</th>
 													<td data-title="Tạm tính"><span
-														class="woocommerce-Price-amount amount">840,000&nbsp;<span
+														class="woocommerce-Price-amount amount"><f:formatNumber value="${total}"/>&nbsp;<span
 															class="woocommerce-Price-currencySymbol">₫</span></span></td>
 												</tr>
 
@@ -560,15 +526,10 @@
 													</td>
 												</tr>
 
-
-
-
-
-
 												<tr class="order-total">
 													<th>Tổng</th>
 													<td data-title="Tổng"><strong><span
-															class="woocommerce-Price-amount amount">840,000&nbsp;<span
+															class="woocommerce-Price-amount amount"><f:formatNumber value="${total}"/>&nbsp;<span
 																class="woocommerce-Price-currencySymbol">₫</span></span></strong></td>
 												</tr>
 
@@ -577,10 +538,17 @@
 										</table>
 
 										<div class="wc-proceed-to-checkout">
-
-											<a href="#"
-												class="checkout-button button alt wc-forward"> Tiến hành
+										<c:set var="TaiKhoan" scope="session" value="${TaiKhoan }" />
+										<c:if test="${not empty TaiKhoan && not empty shop}">
+											<a href="thanhtoan.htm" class="checkout-button button alt wc-forward"> Tiến hành
 												thanh toán</a>
+										</c:if>
+										<c:if test="${empty shop}">											
+											<h5>Giỏ hàng không có sản phẩm!</h5>										
+										</c:if>
+										<c:if test="${empty TaiKhoan}">
+												<h5>vui lòng đăng nhập để thanh toán</h5>
+											</c:if>
 										</div>
 
 

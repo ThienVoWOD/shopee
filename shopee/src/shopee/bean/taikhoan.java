@@ -1,8 +1,13 @@
 package shopee.bean;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class taikhoan {
@@ -12,6 +17,16 @@ public class taikhoan {
 	private String email;
 	private String quyen;
 	private String ghiChu;
+	
+	@OneToMany(mappedBy="taikhoan",fetch=FetchType.LAZY)
+	private Collection <hoadon> hoadon;
+	
+	public Collection<hoadon> getHoadon() {
+		return hoadon;
+	}
+	public void setHoadon(Collection<hoadon> hoadon) {
+		this.hoadon = hoadon;
+	}
 	public String getTenTaiKhoan() {
 		return tenTaiKhoan;
 	}
