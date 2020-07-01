@@ -19,12 +19,10 @@
 				<div class="flex-row container">
 					<div class="flex-col hide-for-medium flex-left">
 						<ul class="nav nav-left medium-nav-center nav-small  nav-divided">
-							<li id="menu-item-345" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-345"><a href="#" class="nav-top-link">Kênh Người Bán</a></li>
-							<li id="menu-item-346" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-346"><a href="#" class="nav-top-link">Tải ứng dụng</a></li>
-							<li id="menu-item-379" class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-379"><a href="" class="nav-top-link">Kết nối</a></li>
-							<li class="html header-social-icons ml-0">
-								<div class="social-icons follow-icons" ><a href="#" target="_blank" data-label="Facebook"  rel="noopener noreferrer nofollow" class="icon plain facebook tooltip" title="Follow on Facebook"><i class="icon-facebook" ></i></a><a href="#" target="_blank" rel="noopener noreferrer nofollow" data-label="Instagram" class="icon plain  instagram tooltip" title="Follow on Instagram"><i class="icon-instagram" ></i></a></div>
-							</li>          
+							<li id="menu-item-345" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-345"><a href="#" data-open="#update" class="nav-top-link">Kênh Người Bán</a></li>
+							<li id="menu-item-346" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-346"><a href="#" data-open="#update" class="nav-top-link">Tải ứng dụng</a></li>
+							<li id="menu-item-379" class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-379"><a href="#" data-open="#update" class="nav-top-link">Kết nối</a></li>
+         
 						</ul>
 					</div><!-- flex-col left -->
 
@@ -90,16 +88,15 @@
 						<li class="header-search-form search-form html relative has-icon">
 							<div class="header-search-form-wrapper">
 								<div class="searchform-wrapper ux-search-box relative is-normal">
-									<form role="search" method="get" class="searchform" action="http://shopee.websieukhung.com/">
+									<form method="post" class="searchform" action="home/search.htm">
 										<div class="flex-row relative">
 											<div class="flex-col flex-grow">
 												<label class="screen-reader-text" for="woocommerce-product-search-field-0">Tìm kiếm:</label>
-												<input type="search" id="woocommerce-product-search-field-0" class="search-field mb-0" placeholder="Tìm sản phẩm, thương hiệu, và tên shop" value="" name="s" />
-												<input type="hidden" name="post_type" value="product" />
+												<input type="search" class="search-field mb-0" placeholder="Tìm tên sản phẩm" name="keyword" />
 											</div><!-- .flex-col -->
 											<div class="flex-col">
 												<button type="submit" value="Tìm kiếm" class="ux-search-submit submit-button secondary button icon mb-0">
-													<i class="icon-search" ></i>
+													<i class='fab fa-sistrix' style='font-size:24px'></i>
 												</button>
 											</div><!-- .flex-col -->
 										</div><!-- .flex-row -->
@@ -226,7 +223,7 @@
 <div class="col medium-2 small-6 large-2"  ><div class="col-inner"  >
 
 <p><strong>THANH TOÁN</strong></p>
-<p> <img class="alignnone size-medium wp-image-185" src="images/pay.png" alt="" width="194" height="109" /></p>
+<p> <img class="alignnone size-medium wp-image-185" src="images/pay.png" alt="" width="194" height="109" /></p>
 <p><strong>ĐƠN VỊ VẬN CHUYỂN</strong></p>
 <p><img class="alignnone size-full wp-image-184" src="images/ship.png" alt="" width="203" height="122" /></p>
 
@@ -269,17 +266,12 @@
 
 </div></div>
 
-
-<style scope="scope">
-
-</style>
 </div>
 
 		</div><!-- .section-content -->
 
 		
 <style scope="scope">
-
 #section_2054117659 {
   padding-top: 40px;
   padding-bottom: 40px;
@@ -317,7 +309,6 @@
 
 		
 	<style scope="scope">
-
 	#section_231996060 {
 	  padding-top: 30px;
 	  padding-bottom: 30px;
@@ -388,12 +379,27 @@
 
 </div>
 
-
-
-
 		<!-- ------------------------------------------------------------------------------------------------- -->
 
 
 	<%@include file="/includes/js.jsp"%>
+	
+	<div id="update" class="lightbox-content mfp-hide">
+<div class="woocommerce-notices-wrapper"></div>
+<div class="account-container lightbox-inner">
+	<div class="col2-set row row-divided row-large" id="customer_login">
+		<div class="col-1 large-12 col pb-0">	
+			<div class="account-login-inner">
+				<center><h4 class="uppercase" style="color: red">Chức năng này chưa được cập nhật</h4></center>
+				<center><h4 class="uppercase">Xin lỗi vì sự bất tiện này</h4></center>
+				
+			</div><!-- .login-inner -->			
+		</div>
+	</div> <!-- .row -->
+
+</div><!-- .account-login-container -->
+
+          </div>
+	
 </body>
 </html>

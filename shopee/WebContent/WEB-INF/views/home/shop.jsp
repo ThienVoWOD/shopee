@@ -1,6 +1,33 @@
 <%@ page pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f" %>
+<style>
+.center {
+  text-align: center;
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+}
+
+.pagination a.active {
+  background-color: #FF0000;
+  color: white;
+  border: 1px solid #FF0000;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+</style>
 
 	<div class="shop-page-title category-page-title page-title featured-title dark ">
 	
@@ -11,7 +38,7 @@
 	
 	<div class="page-title-inner flex-row  medium-flex-wrap container">
 	  <div class="flex-col flex-grow medium-text-center">
-	  	 	 		<h1 class="shop-page-title is-xlarge">${TenLoaiSP }</h1>
+	  	 	 		<center><h1 class="shop-page-title is-xlarge uppercase">${TenLoaiSP }</h1></center>
 		<div class="is-large">
 	<nav class="woocommerce-breadcrumb breadcrumbs "><a href="#">Trang chủ</a> <span class="divider">&#47;</span> <a href="#">Cửa hàng</a> <span class="divider">&#47;</span> Thời Trang Nam</nav></div>
 <div class="category-filtering category-filter-row show-for-medium">
@@ -23,22 +50,7 @@
 			</div>
 </div>
 	  </div><!-- .flex-left -->
-	  
-	   <div class="flex-col medium-text-center  form-flat">
-	  	 	
-<p class="woocommerce-result-count hide-for-medium">
-	Showing all 12 results</p>
-<form class="woocommerce-ordering" method="get">
-	<select name="orderby" class="orderby" aria-label="Đơn hàng của cửa hàng">
-					<option value="popularity" >Thứ tự theo mức độ phổ biến</option>
-					<option value="rating" >Thứ tự theo điểm đánh giá</option>
-					<option value="date"  selected='selected'>Mới nhất</option>
-					<option value="price" >Thứ tự theo giá: thấp đến cao</option>
-					<option value="price-desc" >Thứ tự theo giá: cao xuống thấp</option>
-			</select>
-	<input type="hidden" name="paged" value="1" />
-	</form>
-	   </div><!-- .flex-right -->
+
 	   
 	</div><!-- flex-row -->
 </div><!-- .page-title -->
@@ -64,40 +76,60 @@
 						</c:forEach>
 					</ul>
 				</aside>
+				<form action="home/timTheoGia.htm">
+				    <div class="shopee-filter-group shopee-price-range-filter shopee-price-range-filter--vn">
+				     <div class="shopee-filter-group__header shopee-price-range-filter__header" style="margin-bottom: 4px">Khoảng
+				      giá</div>
+				     <div class="shopee-filter-group__body shopee-price-range-filter__edit">
+				      
+				      <div class="shopee-price-range-filter__inputs">
+				       <input type="text" maxlength="13" name="min"
+				        class="shopee-price-range-filter__input" placeholder="₫ TỪ"
+				        value="" style="width: 5rem; float: left;">
+				       <div class="shopee-price-range-filter__range-line"></div>
+				       <input type="text" maxlength="13" name="max"
+				        class="shopee-price-range-filter__input" placeholder="₫ ĐẾN"
+				        style="width: 5rem; float: left;">
+				      </div>
+				      
+				     </div>
+				     <button class="shopee-button-solid shopee-button-solid--primary" style="background-color: #f9502f; color: white">Áp dụng</button>
+				    </div>
+   				 </form>
 				<aside id="yith-woo-ajax-navigation-2" class="widget yith-woocommerce-ajax-product-filter yith-woo-ajax-navigation woocommerce widget_layered_nav">
 					<h2 class="title-head"><span class="widget-title shop-sidebar">Dịch vụ khuyến mãi</span></h2><div class="is-divider small"></div><ul class='yith-wcan-list yith-wcan '>
-						<li ><a  href="#">0% Trả góp</a> <small class="count">1</small><div class="clear"></div></li>
-						<li ><a  href="#">Hàng có sẵn</a> <small class="count">1</small><div class="clear"></div></li>
-						<li ><a  href="#">Miễn Phí Vận Chuyển</a> <small class="count">1</small><div class="clear"></div></li>
-						<li ><a  href="#">Mua nhiều giảm giá</a> <small class="count">1</small><div class="clear"></div></li>
-						<li ><a  href="#">Rẻ Vô Địch</a> <small class="count">1</small><div class="clear"></div></li>
-						<li ><a  href="#">Đang giảm giá</a> <small class="count">1</small><div class="clear"></div></li>
+						<li ><a  href="#" data-open="#update">0% Trả góp</a> <small class="count">1</small><div class="clear"></div></li>
+						<li ><a  href="#" data-open="#update">Hàng có sẵn</a> <small class="count">1</small><div class="clear"></div></li>
+						<li ><a  href="#" data-open="#update">Miễn Phí Vận Chuyển</a> <small class="count">1</small><div class="clear"></div></li>
+						<li ><a  href="#" data-open="#update">Mua nhiều giảm giá</a> <small class="count">1</small><div class="clear"></div></li>
+						<li ><a  href="#" data-open="#update">Rẻ Vô Địch</a> <small class="count">1</small><div class="clear"></div></li>
+						<li ><a  href="#" data-open="#update">Đang giảm giá</a> <small class="count">1</small><div class="clear"></div></li>
 					</ul>
 				</aside>
 				<aside id="yith-woo-ajax-navigation-3" class="widget yith-woocommerce-ajax-product-filter yith-woo-ajax-navigation woocommerce widget_layered_nav">
 					<h2 class="title-head"><span class="widget-title shop-sidebar">Màu sắc</span></h2>
 					<div class="is-divider small"></div>
 					<ul class='yith-wcan-list yith-wcan '>
-						<li><a  href="#">Trắng</a> <small class="count">12</small><div class="clear"></div></li><li><a  href="#">Vàng</a> <small class="count">12</small><div class="clear"></div></li>
-						<li><a  href="#">Đen</a> <small class="count">12</small><div class="clear"></div></li>
-						<li><a  href="#">Đỏ</a> <small class="count">12</small><div class="clear"></div></li></ul>
+						<li><a  href="#" data-open="#update">Trắng</a> <small class="count">12</small><div class="clear"></div></li><li><a  href="#">Vàng</a> <small class="count">12</small><div class="clear"></div></li>
+						<li><a  href="#" data-open="#update">Đen</a> <small class="count">12</small><div class="clear"></div></li>
+						<li><a  href="#" data-open="#update">Đỏ</a> <small class="count">12</small><div class="clear"></div></li></ul>
 					</aside>
 					<aside id="yith-woo-ajax-navigation-4" class="widget yith-woocommerce-ajax-product-filter yith-woo-ajax-navigation woocommerce widget_layered_nav">
 						<h2 class="title-head"><span class="widget-title shop-sidebar">Đơn vị vận chuyển</span></h2>
 						<div class="is-divider small"></div>
 						<ul class='yith-wcan-list yith-wcan'>
-						<li><a href="#">Ninja Van</a><small class="count">1</small><div class="clear"></div></li>
-						<li><a  href="#">NowShip</a><small class="count">1</small><div class="clear"></div></li>
-						<li><a href="#">Shopee 4H</a><small class="count">1</small><div class="clear"></div></li><li><a  href="#">Shopee Express</a><small class="count">1</small><div class="clear"></div></li>
+						<li><a href="#" data-open="#update">Ninja Van</a><small class="count">1</small><div class="clear"></div></li>
+						<li><a  href="#" data-open="#update">NowShip</a><small class="count">1</small><div class="clear"></div></li>
+						<li><a href="#" data-open="#update">Shopee 4H</a><small class="count">1</small><div class="clear"></div></li><li><a  href="#">Shopee Express</a><small class="count">1</small><div class="clear"></div></li>
 					</ul>
 				</aside>
 				<aside id="yith-woo-ajax-navigation-5" class="widget yith-woocommerce-ajax-product-filter yith-woo-ajax-navigation woocommerce widget_layered_nav">
 					<h2 class="title-head"><span class="widget-title shop-sidebar">Thương hiệu</span></h2>
 					<div class="is-divider small"></div><ul class='yith-wcan-list yith-wcan '>
-						<li ><a href="#">Kase</a><small class="count">12</small><div class="clear"></div></li>
-						<li ><a  href="#">No Brand</a> <small class="count">12</small><div class="clear"></div></li>
-						<li ><a  href="#">Peak Design</a> <small class="count">12</small><div class="clear"></div></li>
-						<li ><a  href="#">Voigtlander</a> <small class="count">12</small><div class="clear"></div>
+						<li ><a href="#" data-open="#update">Kase</a><small class="count">12</small><div class="clear"></div></li>
+						<li ><a  href="#" data-open="#update">No Brand</a> <small class="count">12</small><div class="clear"></div></li>
+						<li ><a  href="#" data-open="#update">Peak Design</a> <small class="count">12</small><div class="clear"></div></li>
+						<li ><a  href="#" data-open="#update">Voigtlander</a> <small class="count">12</small><div class="clear"></div>
 						</li>
 					</ul>
 				</aside>
@@ -105,8 +137,8 @@
 					<h2 class="title-head"><span class="widget-title shop-sidebar">Tình trạng</span></h2>
 					<div class="is-divider small"></div>
 					<ul class='yith-wcan-list yith-wcan '>
-						<li ><a  href="#">Sản phẩm mới</a> <small class="count">12</small><div class="clear"></div></li>
-						<li ><a  href="#">Sản phẩm đã dùng</a> <small class="count">12</small><div class="clear"></div></li>
+						<li ><a  href="#" data-open="#update">Sản phẩm mới</a> <small class="count">12</small><div class="clear"></div></li>
+						<li ><a  href="#" data-open="#update">Sản phẩm đã dùng</a> <small class="count">12</small><div class="clear"></div></li>
 					</ul>
 				</aside>
 			</div><!-- .sidebar-inner -->
@@ -155,6 +187,67 @@
 </c:forEach>
 <!-- <====================================END PRODUCT===========================================> -->
 
+				<!-- <====================================pagination===========================================> -->
+
+					<c:if test = "${not empty keyword}">
+					<div class="center">
+					  <div class="pagination">
+					  <c:if test = "${trang > 1}">
+					  	<a href="home/search.htm?page=${trang-1 }&keyword=${ keyword}">&laquo;</a>
+					  </c:if>
+					  <c:forEach var = "i" begin = "1" end = "${SoTrang }">
+					  	<a
+					  	<c:if test = "${trang == i}">
+					  		class="active"
+					  	</c:if>
+					  	 href="home/search.htm?page=${i }&keyword=${ keyword}">${i }</a>
+					   </c:forEach>
+					   <c:if test = "${trang < SoTrang}">
+					  	<a href="home/search.htm?page=${trang+1 }&keyword=${ keyword}">&raquo;</a>
+					  </c:if>
+					  </div>
+					</div>
+					</c:if>
+					<c:if test = "${not empty idlsp}">
+						<div class="center">
+					  <div class="pagination">
+					  <c:if test = "${trang > 1}">
+					  	<a href="home/shop.htm?page=${trang-1 }&idlsp=${ iidlsp}">&laquo;</a>
+					  </c:if>
+					  <c:forEach var = "i" begin = "1" end = "${SoTrang }">
+					  	<a
+					  	<c:if test = "${trang == i}">
+					  		class="active"
+					  	</c:if>
+					  	 href="home/shop.htm?page=${i }&idlsp=${ iidlsp}">${i }</a>
+					   </c:forEach>
+					   <c:if test = "${trang < SoTrang}">
+					  	<a href="home/shop.htm?page=${trang+1 }&idlsp=${ iidlsp}">&raquo;</a>
+					  </c:if>
+					  </div>
+					</div>
+					</c:if>
+					<c:if test = "${not empty min}">
+						<div class="center">
+					  <div class="pagination">
+					  <c:if test = "${trang > 1}">
+					  	<a href="home/timTheoGia.htm?page=${trang-1 }&min=${ min}&max=${ max}">&laquo;</a>
+					  </c:if>
+					  <c:forEach var = "i" begin = "1" end = "${SoTrang }">
+					  	<a
+					  	<c:if test = "${trang == i}">
+					  		class="active"
+					  	</c:if>
+					  	 href="home/timTheoGia.htm?page=${i }&min=${ min}&max=${ max}">${i }</a>
+					   </c:forEach>
+					   <c:if test = "${trang < SoTrang}">
+					  	<a href="home/timTheoGia.htm?page=${trang+1 }&&min=${ min}&max=${ max}">&raquo;</a>
+					  </c:if>
+					  </div>
+					</div>
+					</c:if>
+					
+				<!-- <==================================== end pagination===========================================> -->
 				</div><!-- row -->
 			</div><!-- shop container -->
 		</div>

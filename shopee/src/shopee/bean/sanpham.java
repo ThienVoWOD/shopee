@@ -25,30 +25,6 @@ public class sanpham {
 	
 	@OneToMany(mappedBy="sanpham",fetch=FetchType.LAZY)
 	private Collection <cthd> cthd;
-	
-	public Collection<cthd> getCthd() {
-		return cthd;
-	}
-
-	public void setCthd(Collection<cthd> cthd) {
-		this.cthd = cthd;
-	}
-
-	public Collection<mausac> getMausac() {
-		return mausac;
-	}
-
-	public void setMausac(Collection<mausac> mausac) {
-		this.mausac = mausac;
-	}
-
-	public Collection<kichco> getKichco() {
-		return kichco;
-	}
-
-	public void setKichco(Collection<kichco> kichco) {
-		this.kichco = kichco;
-	}
 
 	@ManyToOne
 	@JoinColumn(name="idLoaiSanPham")
@@ -59,6 +35,9 @@ public class sanpham {
 	
 	@OneToMany(mappedBy="sanpham",fetch=FetchType.LAZY)
 	private Collection <kichco> kichco;
+	
+	@OneToMany(mappedBy="sanpham",fetch=FetchType.LAZY)
+	private Collection <anhsanpham> anhsanpham;
 
 	public int getIdSanPham() {
 		return idSanPham;
@@ -123,7 +102,37 @@ public class sanpham {
 	public void setLoaisanpham(loaisanpham loaisanpham) {
 		this.loaisanpham = loaisanpham;
 	}
-	
-	
+
+	public Collection<cthd> getCthd() {
+		return cthd;
+	}
+
+	public void setCthd(Collection<cthd> cthd) {
+		this.cthd = cthd;
+	}
+
+	public Collection<mausac> getMausac() {
+		return mausac;
+	}
+
+	public void setMausac(Collection<mausac> mausac) {
+		this.mausac = mausac;
+	}
+
+	public Collection<kichco> getKichco() {
+		return kichco;
+	}
+
+	public void setKichco(Collection<kichco> kichco) {
+		this.kichco = kichco;
+	}
+
+	public Collection<anhsanpham> getAnhsanpham() {
+		return anhsanpham;
+	}
+
+	public void setAnhsanpham(Collection<anhsanpham> anhsanpham) {
+		this.anhsanpham = anhsanpham;
+	}
 	
 }

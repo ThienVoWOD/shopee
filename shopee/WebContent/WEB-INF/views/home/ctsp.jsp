@@ -145,19 +145,13 @@
                 "pageDots": false,
                 "rightToLeft": false       }'>
     <div  class="woocommerce-product-gallery__image slide first">
-    	<a href="AnhSanPham/${sp.hinhAnh }"><img width="600" height="600" src="AnhSanPham/${sp.hinhAnh }" class="lazy-load wp-post-image skip-lazy" data-large_image="images/demo.jpg" data-large_image_width="900" data-large_image_height="900" data-srcset="AnhSanPham/${sp.hinhAnh }" sizes="(max-width: 600px) 100vw, 600px" /></a>
+    	<a href="AnhSanPham/${asp.anh1 }"><img width="600" height="600" src="AnhSanPham/${asp.anh1 }" class="lazy-load wp-post-image skip-lazy" data-large_image="images/demo.jpg" data-large_image_width="900" data-large_image_height="900" data-srcset="AnhSanPham/${asp.anh1 }" sizes="(max-width: 600px) 100vw, 600px" /></a>
     </div>
     <div  class="woocommerce-product-gallery__image slide first">
-    	<a href="AnhSanPham/${sp.hinhAnh }"><img width="600" height="600" src="AnhSanPham/${sp.hinhAnh }" class="lazy-load wp-post-image skip-lazy" data-large_image="images/demo.jpg" data-large_image_width="900" data-large_image_height="900" data-srcset="AnhSanPham/${sp.hinhAnh }" sizes="(max-width: 600px) 100vw, 600px" /></a>
+    	<a href="AnhSanPham/${asp.anh2 }"><img width="600" height="600" src="AnhSanPham/${asp.anh2 }" class="lazy-load wp-post-image skip-lazy" data-large_image="images/demo.jpg" data-large_image_width="900" data-large_image_height="900" data-srcset="AnhSanPham/${asp.anh2 }" sizes="(max-width: 600px) 100vw, 600px" /></a>
     </div>
     <div  class="woocommerce-product-gallery__image slide first">
-    	<a href="AnhSanPham/${sp.hinhAnh }"><img width="600" height="600" src="AnhSanPham/${sp.hinhAnh }" class="lazy-load wp-post-image skip-lazy" data-large_image="images/demo.jpg" data-large_image_width="900" data-large_image_height="900" data-srcset="AnhSanPham/${sp.hinhAnh }" sizes="(max-width: 600px) 100vw, 600px" /></a>
-    </div>
-    <div  class="woocommerce-product-gallery__image slide first">
-    	<a href="AnhSanPham/${sp.hinhAnh }"><img width="600" height="600" src="AnhSanPham/${sp.hinhAnh }" class="lazy-load wp-post-image skip-lazy" data-large_image="images/demo.jpg" data-large_image_width="900" data-large_image_height="900" data-srcset="AnhSanPham/${sp.hinhAnh }" sizes="(max-width: 600px) 100vw, 600px" /></a>
-    </div>
-    <div  class="woocommerce-product-gallery__image slide first">
-    	<a href="AnhSanPham/${sp.hinhAnh }"><img width="600" height="600" src="AnhSanPham/${sp.hinhAnh }" class="lazy-load wp-post-image skip-lazy" data-large_image="images/demo.jpg" data-large_image_width="900" data-large_image_height="900" data-srcset="AnhSanPham/${sp.hinhAnh }" sizes="(max-width: 600px) 100vw, 600px" /></a>
+    	<a href="AnhSanPham/${asp.anh3 }"><img width="600" height="600" src="AnhSanPham/${asp.anh3 }" class="lazy-load wp-post-image skip-lazy" data-large_image="images/demo.jpg" data-large_image_width="900" data-large_image_height="900" data-srcset="AnhSanPham/${asp.anh3 }" sizes="(max-width: 600px) 100vw, 600px" /></a>
     </div>
     
 
@@ -177,20 +171,16 @@
               "rightToLeft": false,
               "contain": true
           }'
-    > <div class="col is-nav-selected first">
-        <a><img src="AnhSanPham/${sp.hinhAnh }" width="188" height="188" class="attachment-woocommerce_thumbnail" /></a>
-      </div>
+    > 
+
     <div class="col">
-    	<a><img src="AnhSanPham/${sp.hinhAnh }" width="188" height="188"  class="lazy-load attachment-woocommerce_thumbnail" /></a>
+    	<a><img src="AnhSanPham/${asp.anh1 }" width="188" height="188"  class="lazy-load attachment-woocommerce_thumbnail" /></a>
     </div>
     <div class="col">
-    	<a><img src="AnhSanPham/${sp.hinhAnh }" width="188" height="188"  class="lazy-load attachment-woocommerce_thumbnail" /></a>
+    	<a><img src="AnhSanPham/${asp.anh2 }" width="188" height="188"  class="lazy-load attachment-woocommerce_thumbnail" /></a>
     </div>
     <div class="col">
-    	<a><img src="AnhSanPham/${sp.hinhAnh }" width="188" height="188"  class="lazy-load attachment-woocommerce_thumbnail" /></a>
-    </div>
-    <div class="col">
-    	<a><img src="AnhSanPham/${sp.hinhAnh }" width="188" height="188"  class="lazy-load attachment-woocommerce_thumbnail" /></a>
+    	<a><img src="AnhSanPham/${asp.anh3 }" width="188" height="188"  class="lazy-load attachment-woocommerce_thumbnail" /></a>
     </div>
       </div><!-- .product-thumbnails -->
       
@@ -264,7 +254,7 @@
 		<div class="quantity">	
 		 		
 		<button class="qt-minus" id="tru">-</button>	
-		<input type="number" class="input-text qt" id="soluong" style="width: 50px; height: 38px;margin-left: -15px" step="1" min="1" max="${sp.soLuong}" name="soluong" value="1"/>
+			<input type="number" class="input-text qt" id="soluong" style="width: 50px; height: 38px;margin-left: -15px" step="1" min="1" max="${sp.soLuong}" name="soluong" value="1"/>
 		<button class="qt-plus" id="cong">+</button>
 		  
 		</div>

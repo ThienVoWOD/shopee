@@ -43,7 +43,8 @@ public class homecontroller {
 	
 	
 	@RequestMapping("shop")
-	public String shop(ModelMap model,@ModelAttribute("TenLoaiSP") String TenLoaiSP,@ModelAttribute("idlsp") String idlsp) {
+	public String shop(ModelMap model,@ModelAttribute("TenLoaiSP") String TenLoaiSP,@ModelAttribute("idlsp") String idlsp,
+			@ModelAttribute("page") String page) {
 		
 		if (TenLoaiSanPham.equals("No")) {
 			if (TenLoaiSP.isEmpty()) {
@@ -60,21 +61,60 @@ public class homecontroller {
 		List<loaisanpham> loaisanpham = query.list();
 		model.addAttribute("loaisanpham", loaisanpham);
 		model.addAttribute("TenLoaiSP", TenLoaiSanPham);
-		
+		int trang = 1;
 		if (idlsp.isEmpty()) {
+			try {
+				if (!page.isEmpty()) {
+					trang = Integer.parseInt(page);
+				}
+			} catch (Exception e) {
+				trang = 1;
+			}
+
 			String hql1 = "From sanpham where loaisanpham = " + loaisanpham.get(0).getIdLoaiSanPham()
 					+ " and soLuong > 0 ";
 			Query query1 = session.createQuery(hql1);
+			int SoSP = query1.list().size();
+			int SoTrang = 0;
+			query1.setFirstResult(20 * trang - 20);
+			query1.setMaxResults(20 * trang);
 			List<sanpham> dsshop = query1.list();
+			if (SoSP % 20 == 0) {
+				SoTrang = SoSP / 20;
+			} else {
+				SoTrang = SoSP / 20 + 1;
+			}
+
+			model.addAttribute("trang", trang);
 			model.addAttribute("dsshop", dsshop);
+			model.addAttribute("SoTrang", SoTrang);
 			model.addAttribute("iidlsp", loaisanpham.get(0).getIdLoaiSanPham());
 		} else {
+			try {
+				if (!page.isEmpty()) {
+					trang = Integer.parseInt(page);
+				}
+			} catch (Exception e) {
+				trang = 1;
+			}
 			String hql1 = "From sanpham where loaisanpham = " + idlsp + " and soLuong > 0 ";
 			Query query1 = session.createQuery(hql1);
+			int SoSP = query1.list().size();	
+			query1.setFirstResult(20 * trang - 20);
+			query1.setMaxResults(20);
 			List<sanpham> dsshop = query1.list();
-			model.addAttribute("iidlsp", idlsp);
-			model.addAttribute("dsshop", dsshop);
+			
+			int SoTrang = 0;
+			if (SoSP % 20 == 0) {
+				SoTrang = SoSP / 20;
+			} else {
+				SoTrang = SoSP / 20 + 1;
+			}
 
+			model.addAttribute("trang", trang);
+			model.addAttribute("iidlsp", idlsp);
+			model.addAttribute("SoTrang", SoTrang);
+			model.addAttribute("dsshop", dsshop);
 		}
 		return "home/shop";
 	}
@@ -98,11 +138,85 @@ public class homecontroller {
 		Query query3 = session.createQuery(hql3);
 		mausac mausac = (mausac) query3.uniqueResult();
 		
+		String hql4 = "FROM anhsanpham where idSanPham = " + idsp + "";
+		Query query4 = session.createQuery(hql4);
+		anhsanpham anhsanpham = (anhsanpham) query4.uniqueResult();
+		
+		model.addAttribute("asp", anhsanpham);
 		model.addAttribute("sp", sanpham);
 		model.addAttribute("ms", mausac);
 		model.addAttribute("kc", kichco);
 		model.addAttribute("dsshop", dsshop);
 		model.addAttribute("TenLoaiSP", TenLoaiSanPham);
 		return "home/ctsp";
+	}
+	
+	@RequestMapping("search")
+	public String TimKiemSanPham(ModelMap model,@ModelAttribute("keyword") String keyword, @ModelAttribute("page") String page) {
+		
+		int trang = 1;
+		try {
+			if (!page.isEmpty()) {
+				trang = Integer.parseInt(page);
+			}
+		} catch (Exception e) {
+			trang = 1;
+		}
+		
+		Session session = factory.getCurrentSession();
+		String hql1 = "FROM sanpham where tenSanPham like '%"+keyword+"%'";
+		Query query1 = session.createQuery(hql1);		
+		int SoSP = query1.list().size();
+		int SoTrang = 0;
+		if (SoSP % 20 == 0) {
+			SoTrang = SoSP / 20;
+		} else {
+			SoTrang = SoSP / 20 + 1;
+		}
+		
+		query1.setFirstResult(20 * trang - 20);
+		query1.setMaxResults(20);
+		List<sanpham> dsshop = query1.list();
+		model.addAttribute("dsshop", dsshop);
+		model.addAttribute("trang", trang);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("SoTrang", SoTrang);
+		
+		return "home/shop";
+	}
+	
+	@RequestMapping("timTheoGia")
+	public String TimTheoGia(ModelMap model,@ModelAttribute("min") String min,@ModelAttribute("max") String max, @ModelAttribute("page") String page) {
+		
+		int trang = 1;
+		try {
+			if (!page.isEmpty()) {
+				trang = Integer.parseInt(page);
+			}
+		} catch (Exception e) {
+			trang = 1;
+		}
+		
+		Session session = factory.getCurrentSession();
+		String hql1 = "FROM sanpham where giaTien between "+min+" and "+max+"";
+		Query query1 = session.createQuery(hql1);		
+		int SoSP = query1.list().size();
+		int SoTrang = 0;
+		if (SoSP % 20 == 0) {
+			SoTrang = SoSP / 20;
+		} else {
+			SoTrang = SoSP / 20 + 1;
+		}
+		
+		query1.setFirstResult(20 * trang - 20);
+		query1.setMaxResults(20);
+		List<sanpham> dsshop = query1.list();
+		model.addAttribute("dsshop", dsshop);
+		model.addAttribute("trang", trang);
+		model.addAttribute("min", min);
+		model.addAttribute("max", max);
+		model.addAttribute("SoTrang", SoTrang);
+		
+		return "home/shop";
 	}
 }
